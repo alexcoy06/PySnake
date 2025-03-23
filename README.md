@@ -22,10 +22,10 @@ This is a simple Snake game built using Python's `turtle` library. The project i
 
 1. Ensure Python is installed on your system.
 2. Download or clone this repository.
-3. Run the `snake_game.py` script in a Python environment.
+3. Run the `main.py` script in a Python environment.
 
 ```sh
-python snake_game.py
+python main.py
 ```
 
 ## Project Breakdown

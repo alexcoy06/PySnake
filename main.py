@@ -1,6 +1,8 @@
-from turtle import Screen, Turtle
-from snake import Snake
 import time
+from turtle import Screen
+from lib.food import Food
+from lib.snake import Snake
+from lib.scoreboard import Scoreboard
 
 # GUI Step-up for the Screen
 screen = Screen()
@@ -10,6 +12,8 @@ screen.title('Snake Game')
 screen.tracer(0)
 
 snake = Snake()
+food = Food()
+scoreboard = Scoreboard()
 
 # Event listening for button presses   
 screen.listen()
@@ -31,5 +35,10 @@ while game_on:
     time.sleep(0.1)
     
     snake.move()
+    
+    # Detect Collision with food
+    if snake.head.distance(food) < 15:
+        food.eaten()
+        
     
 screen.exitonclick()
