@@ -32,13 +32,23 @@ while game_on:
     
     #smoothing movement transition
     screen.update()
-    time.sleep(0.1)
-    
+    time.sleep(0.15)
     snake.move()
     
     # Detect Collision with food
     if snake.head.distance(food) < 15:
         food.eaten()
+        snake.extend()
+        scoreboard.scored()
         
+    
+        
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        game_on = False
+        scoreboard.game_over()
+    elif any(snake.head.distance(segment) < 10 for segment in snake.snake_body[1:]):
+        game_on = False
+        scoreboard.game_over()
+
     
 screen.exitonclick()

@@ -13,15 +13,19 @@ class Snake:
     
     # Creates the body with length across the x    
     def create_snake(self):
-        position = 0
-        
         for segment in range(BODY_LENGTH):
+            self.add_segment((-segment * DISTANCE, 0))
+        
+    
+    def add_segment(self, position):
             new_segment = Turtle('square')
             new_segment.color('white')
             new_segment.penup()
-            new_segment.goto(position, 0)
+            new_segment.goto(position)
             self.snake_body.append(new_segment)
-            position -= 20
+            
+    def extend(self):
+        self.add_segment(self.snake_body[-1].position())
     
     # Snake Movement so that all segments moves in line     
     def move(self):
